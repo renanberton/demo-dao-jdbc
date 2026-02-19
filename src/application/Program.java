@@ -16,12 +16,11 @@ public class Program {
 			SellerDao sellerDao = DaoFactory.createSellerDao();
 			//Seller seller = sellerDao.findById(3);
 			Department department = new Department(2, null);
-			List<Seller> list = sellerDao.findByDepartment(department);
+			List<Seller> list = sellerDao.findAll();
 			for(Seller obj : list) {
 				System.out.println(obj);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
