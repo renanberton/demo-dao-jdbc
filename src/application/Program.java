@@ -1,7 +1,7 @@
 package application;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Date;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -10,20 +10,11 @@ import model.entities.Seller;
 
 public class Program {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+	SellerDao sellerDao = DaoFactory.createSellerDao();;
 
-		try {
-			SellerDao sellerDao = DaoFactory.createSellerDao();
-			//Seller seller = sellerDao.findById(3);
-			Department department = new Department(2, null);
-			List<Seller> list = sellerDao.findAll();
-			for(Seller obj : list) {
-				System.out.println(obj);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+	Seller newSelleer = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, new Department(2, null));
+	sellerDao.insert(newSelleer);
 	}
 
 }
